@@ -118,6 +118,13 @@ export default function PersistentDrawerLeft() {
         setOpen(false);
     };
 
+    const [currentChapter, setCurrentChapter] =
+        React.useState('Harry Potter and Philosopher\'s stone');
+
+    const selectCurrentChapter = (chapter) =>
+        setCurrentChapter(chapter);
+
+
     const chapters = [
         'Chapter 1 : The Boy Who Lived',
         'Chapter 2 : The Vanishing Glass',
@@ -157,8 +164,9 @@ export default function PersistentDrawerLeft() {
                     >
                         <MenuIcon/>
                     </IconButton>
-                    <Typography variant="h6" noWrap>
-                        Hogwarts Reader
+
+                    <Typography variant="h6">
+                        Currently Reading : {currentChapter}
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -180,22 +188,16 @@ export default function PersistentDrawerLeft() {
                 <List>
                     <ListItem button>
                         <ListItemIcon><FlashOnIcon/></ListItemIcon>
-                        <ListItemText primary="Top" onClick={scrollToTop}/>
+                        <ListItemText primary="Back to Index" onClick={scrollToTop}/>
                     </ListItem>
 
-                    {/*{*/}
-                    {/*chapters.map((text, index) => (*/}
-                    {/*<ListItem button key={index}>*/}
-                    {/*<ListItemIcon><FlashOnIcon/></ListItemIcon>*/}
-                    {/*<ListItemText primary={text} onClick={scrollToTop}/>*/}
-                    {/*</ListItem>*/}
-                    {/*))}*/}
                     {
                         chapters.map((eachChapter, index) =>
                                          <Link activeClass="active" className="chapters"
                                                to={eachChapter}
                                                spy={true} smooth={true}
-                                               duration={500}>
+                                               duration={500}
+                                               onClick={() => selectCurrentChapter(eachChapter)}>
                                              < ListItem button key={index}>
                                                  <ListItemIcon><FlashOnIcon/></ListItemIcon>
                                                  <ListItemText primary={eachChapter}/>
@@ -223,7 +225,8 @@ export default function PersistentDrawerLeft() {
                                          <Link activeClass="active" className="chapters"
                                                to={eachChapter}
                                                spy={true} smooth={true}
-                                               duration={500}>
+                                               duration={500}
+                                               onClick={() => selectCurrentChapter(eachChapter)}>
                                              < ListItem button key={index}>
                                                  <ListItemIcon><FlashOnIcon/></ListItemIcon>
                                                  <ListItemText primary={eachChapter}/>
