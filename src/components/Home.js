@@ -19,8 +19,29 @@ import FlashOnIcon from '@material-ui/icons/FlashOn';
 import {
     Link,
     DirectLink,
+    Element,
+    Events,
+    animateScroll as scroll,
+    scrollSpy,
+    scroller
 } from 'react-scroll'
 import Chapter1 from './Chapters/Chapter1';
+import Chapter2 from './Chapters/Chapter2';
+import Chapter3 from './Chapters/Chapter3';
+import Chapter4 from './Chapters/Chapter4';
+import Chapter5 from './Chapters/Chapter5';
+import Chapter6 from './Chapters/Chapter6';
+import Chapter7 from './Chapters/Chapter7';
+import Chapter8 from './Chapters/Chapter8';
+import Chapter9 from './Chapters/Chapter9';
+import Chapter10 from './Chapters/Chapter10';
+import Chapter11 from './Chapters/Chapter11';
+import Chapter12 from './Chapters/Chapter12';
+import Chapter13 from './Chapters/Chapter13';
+import Chapter14 from './Chapters/Chapter14';
+import Chapter15 from './Chapters/Chapter15';
+import Chapter16 from './Chapters/Chapter16';
+import Chapter17 from './Chapters/Chapter17';
 
 const drawerWidth = 240;
 
@@ -79,6 +100,10 @@ const useStyles = makeStyles(theme => ({
         marginLeft: 0,
     },
 }));
+
+function scrollToTop() {
+    scroll.scrollToTop();
+}
 
 export default function PersistentDrawerLeft() {
     const classes = useStyles();
@@ -153,12 +178,31 @@ export default function PersistentDrawerLeft() {
                 </div>
                 <Divider/>
                 <List>
-                    {['Inbox', 'Starred'].map((text, index) => (
-                        <ListItem button key={index}>
-                            <ListItemIcon><FlashOnIcon/></ListItemIcon>
-                            <ListItemText primary={text}/>
-                        </ListItem>
-                    ))}
+                    <ListItem button>
+                        <ListItemIcon><FlashOnIcon/></ListItemIcon>
+                        <ListItemText primary="Top" onClick={scrollToTop}/>
+                    </ListItem>
+
+                    {/*{*/}
+                    {/*chapters.map((text, index) => (*/}
+                    {/*<ListItem button key={index}>*/}
+                    {/*<ListItemIcon><FlashOnIcon/></ListItemIcon>*/}
+                    {/*<ListItemText primary={text} onClick={scrollToTop}/>*/}
+                    {/*</ListItem>*/}
+                    {/*))}*/}
+                    {
+                        chapters.map((eachChapter, index) =>
+                                         <Link activeClass="active" className="chapters"
+                                               to={eachChapter}
+                                               spy={true} smooth={true}
+                                               duration={500}>
+                                             < ListItem button key={index}>
+                                                 <ListItemIcon><FlashOnIcon/></ListItemIcon>
+                                                 <ListItemText primary={eachChapter}/>
+                                             </ListItem>
+                                         </Link>
+                        )
+                    }
                 </List>
             </Drawer>
             <main
@@ -190,6 +234,23 @@ export default function PersistentDrawerLeft() {
                 </List>
 
                 <Chapter1/>
+                <Chapter2/>
+                <Chapter3/>
+                <Chapter4/>
+                <Chapter5/>
+                <Chapter6/>
+                <Chapter7/>
+                <Chapter8/>
+                <Chapter9/>
+                <Chapter10/>
+                <Chapter11/>
+                <Chapter12/>
+                <Chapter13/>
+                <Chapter14/>
+                <Chapter15/>
+                <Chapter16/>
+                <Chapter17/>
+
             </main>
         </div>
     );

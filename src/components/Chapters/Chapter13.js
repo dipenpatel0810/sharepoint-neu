@@ -2,13 +2,13 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
-export default function Chapter1(){
+export default function Chapter13(){
     return(
         <React.Fragment>
-            <Element name="Chapter 1 : The Boy Who Lived" className="element" >
+            <Element name="Chapter 13 : Nicholas Flamel" className="element" >
                 <Typography align="center" variant="h3">
                     <br/><br/> <br/><br/>
-                    Chapter 1 : The Boy Who Lived
+                    Chapter 13 : Nicholas Flamel
                 </Typography>
             </Element>
             <br/>
