@@ -15,18 +15,12 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import FlashOnIcon from '@material-ui/icons/FlashOn';
 import {
     Link,
     DirectLink,
-    Element,
-    Events,
-    animateScroll as scroll,
-    scrollSpy,
-    scroller
 } from 'react-scroll'
-import Texts from './Texts';
+import Chapter1 from './Chapters/Chapter1';
 
 const drawerWidth = 240;
 
@@ -99,6 +93,26 @@ export default function PersistentDrawerLeft() {
         setOpen(false);
     };
 
+    const chapters = [
+        'Chapter 1 : The Boy Who Lived',
+        'Chapter 2 : The Vanishing Glass',
+        'Chapter 3 : The Letters from No One',
+        'Chapter 4 : The Keeper of Keys',
+        'Chapter 5 : Diagon Alley',
+        'Chapter 6 : The Journey from Platform Nine and Three-Quarters',
+        'Chapter 7 : The Sorting Hat',
+        'Chapter 8 : The Potions Master',
+        'Chapter 9 : The Midnight Duel',
+        'Chapter 10 : Hallowe\'en',
+        'Chapter 11 : Quidditch',
+        'Chapter 12 : The Mirror of Erised',
+        'Chapter 13 : Nicholas Flamel',
+        'Chapter 14 : Norbert the Norwegian Ridgeback',
+        'Chapter 15 : The Forbidden Forest',
+        'Chapter 16 : Through the Trapdoor',
+        'Chapter 17 : The Man with Two Faces',
+    ];
+
     return (
         <div className={classes.root}>
             <CssBaseline/>
@@ -119,7 +133,7 @@ export default function PersistentDrawerLeft() {
                         <MenuIcon/>
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Persistent drawer
+                        Hogwarts Reader
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -140,9 +154,8 @@ export default function PersistentDrawerLeft() {
                 <Divider/>
                 <List>
                     {['Inbox', 'Starred'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon/> :
-                                           <MailIcon/>}</ListItemIcon>
+                        <ListItem button key={index}>
+                            <ListItemIcon><FlashOnIcon/></ListItemIcon>
                             <ListItemText primary={text}/>
                         </ListItem>
                     ))}
@@ -155,13 +168,28 @@ export default function PersistentDrawerLeft() {
             >
                 <div className={classes.drawerHeader}/>
 
-                <li>
-                    <Link activeClass="active" className="test1" to="test1" spy={true} smooth={true}
-                          duration={500}>Test 1</Link>
-                </li>
+                <Typography align="center" variant="h1">Harry Potter</Typography>
+                <Typography align="center" variant="h3">and the Philosopher's
+                    Stone</Typography>
 
 
-                <Texts/>
+                <List>
+                    {
+                        chapters.map((eachChapter, index) =>
+                                         <Link activeClass="active" className="chapters"
+                                               to={eachChapter}
+                                               spy={true} smooth={true}
+                                               duration={500}>
+                                             < ListItem button key={index}>
+                                                 <ListItemIcon><FlashOnIcon/></ListItemIcon>
+                                                 <ListItemText primary={eachChapter}/>
+                                             </ListItem>
+                                         </Link>
+                        )
+                    }
+                </List>
+
+                <Chapter1/>
             </main>
         </div>
     );
